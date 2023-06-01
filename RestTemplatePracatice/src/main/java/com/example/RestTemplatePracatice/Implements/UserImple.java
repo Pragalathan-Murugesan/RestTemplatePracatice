@@ -16,5 +16,5 @@ public interface UserImple {
 
     Object update(Long id);
 
-    ResponseEntity<Object> delete(Long id);
+    void delete(Long id);
 }

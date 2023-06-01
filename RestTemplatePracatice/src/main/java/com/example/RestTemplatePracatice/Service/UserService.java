@@ -93,25 +93,13 @@ public class UserService implements UserImple {
 //        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 //        HttpEntity<User> entity = new HttpEntity<User>(httpHeaders);
         return restTemplate.patchForObject(url,param,Object.class);
-//     return   restTemplate.exchange(url+"id",HttpMethod.PATCH,null,Object.class);
 
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-//        HttpEntity<Users> entity = new HttpEntity<Users>(httpHeaders);
-//       ResponseEntity<ApiRes1> response = restTemplate.exchange(url,HttpMethod.PATCH,entity,ApiRes1.class);
-//        return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
     }
     @Override
-    public ResponseEntity<Object> delete(Long id) {
+    public void delete(Long id) {
         String url = "http://localhost:8081/api/deletebyid/{id}";
         Map<String,Long> param = new HashMap<String,Long>();
         param.put("id",id);
-       ApiRes1 name =  restTemplate.delete(url, param);
-//        String data = param.toString();
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-//        HttpEntity<Users> entity = new HttpEntity<Users>(httpHeaders);
-//        ResponseEntity<Object> response =  restTemplate.exchange(url,param,HttpMethod.DELETE,entity,Object.class);
-        return new ResponseEntity<>(response.getBody(),HttpStatus.OK);
+        restTemplate.delete(url, param);
     }
 }
